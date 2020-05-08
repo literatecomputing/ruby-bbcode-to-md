@@ -30,15 +30,27 @@ module RubyBBCode
         :description => 'Ordered list',
         :example => '[ol][li]List item[/li][li]Another list item[/li][/ol].',
         :only_allow => [ :li ]},
+      :list => {
+        :html_open => "\n", :html_close => "\n",
+        :description => 'vb unordered list',
+        :example => '[list][li]List item[/li][li]Another list item[/li][/list].',
+        :only_allow => [ :li ],
+        :require_between => false,
+        :allow_tag_param => true,
+        :allow_tag_param_between => true,
+        :tag_param => /(.*)/,
+        :tag_param_tokens => [{:token => :is_numbered}]
+      },
       :li => {
         :html_open => {
           :ul => '  - ',
-          :ol => '  1. '
+          :ol => '  1. ',
+          :list => '  - '
         },
         :html_close => "\n",
         :description => 'List item',
         :example => '[ul][li]List item[/li][li]Another list item[/li][/ul].',
-        :only_in => [ :ul, :ol ]},
+        :only_in => [ :ul, :ol, :list ]},
       :img => {
         :html_open => '%between%', :html_close => '',
         :description => 'Image',

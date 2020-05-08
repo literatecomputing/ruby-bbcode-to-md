@@ -39,6 +39,16 @@ class RubyBbcodeTest < MiniTest::Unit::TestCase
     assert_equal "\n  1. item 1\n  1. item 2\n\n", '[ol][li]item 1[/li][li]item 2[/li][/ol]'.bbcode_to_md
   end
 
+  def test_vb_unordered_list
+    assert_equal "\n  - item 1\n  - item 2\n\n", '[list][li]item 1[/li][li]item 2[/li][/list]'.bbcode_to_md
+  end
+
+  def test_vb_ordered_list_as_unordered
+    puts '[list=1][li]item 1[/li][li]item 2[/li][/list]'.bbcode_to_md
+    assert_equal "\n  - item 1\n  - item 2\n\n", '[list=1][li]item 1[/li][li]item 2[/li][/list]'.bbcode_to_md
+  end
+
+
   def test_unordered_list
     assert_equal "\n  - item 1\n  - item 2\n\n", '[ul][li]item 1[/li][li]item 2[/li][/ul]'.bbcode_to_md
   end
