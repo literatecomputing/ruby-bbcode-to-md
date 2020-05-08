@@ -32,7 +32,7 @@ module RubyBBCode
         :only_allow => [ :li ]},
       :list => {
         :html_open => "\n", :html_close => "\n",
-        :description => 'vb unordered list',
+        :description => 'vb unordered list (do not know how to treat ordered differently)',
         :example => '[list][li]List item[/li][li]Another list item[/li][/list].',
         :only_allow => [ :li ],
         :require_between => false,

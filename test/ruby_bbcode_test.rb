@@ -40,11 +40,42 @@ class RubyBbcodeTest < MiniTest::Unit::TestCase
   end
 
   def test_vb_unordered_list
+    raw = %{[list]
+[li][B]Build Number / Patch Number:[/B] 2020-04-23-1209-p15139--s[/li]
+[li][B]Seed Number[/B]: 1446334793[/li]
+[li][B]Type of Bug[/B][/li]
+[list]
+[li][B][I]Visual[/I][/B][/li]
+[list]
+[li]Turret Construction - Attack Radius remains active until construction complete.[/li]
+[/list]
+[li][B][I]UI[/I][/B][/li]
+[list]
+[li]Global Mineral count not == to local Storage counters[/li]
+[li]Global Waste count not == to local Storage counters[/li]
+[li]Global Isotopes count not == to local Storage counters[/li]
+[li]Global Worker count allows for 213/ 205 workers (Build habitat pods then remove them for extra workers - need validator for removal of Habitat pods *User cannot remove if max worker limit reached)[/li]
+[li]Tiles with Rocks can be claimed without Influence (User needs to select tile 1 then instantly press c, then select next tile and press c again. any speed required even paused)[/li]
+[li]Tiles with Small Buildings can be claimed without Influence (User needs to select tile 1 then instantly press c, then select next tile and press c again. any speed required even paused)[/li]
+[li]Empty Tiles can be claimed without Influence (User needs to select tile 1 then instantly press c, then select next tile and press c again. any speed required even paused)[/li]
+[/list]
+[li][B][I]Gameplay[/li]
+		General AI issues[/I][/B]
+[list]
+[li]The AI appear to provide 1 worker to remove Resources from mines (Built a Storage unit next to the mine)[/li]
+[/list]
+[/list]
+[li][B]Blocking Progression? [/B][I][B]No[/B][/I][/li]
+[li][B]Result of Save/Load?[/B] [I][B]Yes[/li]
+
+	Save: [URL="https://www.dropbox.com/s/idadak6b2ve37pz/GameData.zip?dl=0"]https://www.dropbox.com/s/idadak6b2v...eData.zip?dl=0[/B][/I]
+[/list]}
+
+    puts raw.bbcode_to_md
     assert_equal "\n  - item 1\n  - item 2\n\n", '[list][li]item 1[/li][li]item 2[/li][/list]'.bbcode_to_md
   end
 
   def test_vb_ordered_list_as_unordered
-    puts '[list=1][li]item 1[/li][li]item 2[/li][/list]'.bbcode_to_md
     assert_equal "\n  - item 1\n  - item 2\n\n", '[list=1][li]item 1[/li][li]item 2[/li][/list]'.bbcode_to_md
   end
 
